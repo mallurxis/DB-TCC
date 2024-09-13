@@ -1,11 +1,10 @@
 drop database dbTCC;
-
 -- criando banco de dados
 create database dbTCC;
-
+ 
 -- acessando banco de dados;
 use dbTCC;
-
+ 
 -- criando as tabelas
 create table tbAlunos(
 codAluno int not null auto_increment,
@@ -15,7 +14,7 @@ email varchar (100),
 senha varchar(10) not null,
 modulo char (1),
 primary key(codAluno));
-
+ 
 create table tbProfessores(
 codProf int not null auto_increment,
 nomeProf varchar (100) not null,
@@ -27,23 +26,39 @@ create table tbProdutos(
 codProd int not null auto_increment,
 nomeProd varchar(100) not null,
 quant char(3),
-valorkg decimal(9,2),
-descricao varchar (500),
+valorProd decimal(9,2),
+validade date,
+dataEntrada date,
 primary key(codProd));
 
 create table tbPratos(
 codPrato int not null auto_increment,
 nomePrato varchar(100) not null,
 precoPrato decimal (9,2),
-Pratogramas decimal(3,3),
+quantPrato decimal(9,2),
 codProd int not null,
 primary key(codPrato),
 foreign key(codProd)references tbProdutos(codProd));
 
- -- visualizando a estrutura das tabelas
+create table tbCardapio(
+semana date,
+nomePrato varchar(100) not null,
+nomeProduto varchar(100) not null,
+precoPrato decimal(9,2),
+primary key(nomePrato),
+foreign key(codPrato) references tbPratos(codPrato)
+foreign key(codAluno) references tbAlunos(codAluno)
+foreign key(codProf) references tbProfessores(codProf));
+
+
+
+
+)
+ 
+-- visualizando a estrutura das tabelas
 desc tbAlunos;
 desc tbProfessores;
 desc tbProdutos;
 desc tbPratos;
-
-select * from dbTCC;
+ 
+select * from tbAlunos;
