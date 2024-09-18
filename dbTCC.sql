@@ -26,6 +26,7 @@ create table tbProdutos(
 codProd int not null auto_increment,
 nomeProd varchar(100) not null,
 quant char(3),
+mult decimal (9,2),
 valorProd decimal(9,2),
 validade date,
 dataEntrada date,
@@ -35,7 +36,7 @@ create table tbPratos(
 codPrato int not null auto_increment,
 nomePrato varchar(100) not null,
 precoPrato decimal (9,2),
-quantPrato decimal(9,2),
+pesoPrato decimal(9,2),
 codProd int not null,
 primary key(codPrato),
 foreign key(codProd)references tbProdutos(codProd));
@@ -58,6 +59,7 @@ foreign key(codPrato) references tbPratos(codPrato));
 
 
 )
+ 
  
 -- visualizando a estrutura das tabelas
 desc tbAlunos;
