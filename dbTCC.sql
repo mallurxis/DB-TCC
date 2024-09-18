@@ -41,14 +41,18 @@ primary key(codPrato),
 foreign key(codProd)references tbProdutos(codProd));
 
 create table tbCardapio(
+codCardapio int not null auto_increment,
 semana date,
 nomePrato varchar(100) not null,
 nomeProduto varchar(100) not null,
 precoPrato decimal(9,2),
-primary key(nomePrato),
-foreign key(codPrato) references tbPratos(codPrato)
-foreign key(codAluno) references tbAlunos(codAluno)
-foreign key(codProf) references tbProfessores(codProf));
+codAluno int not null,
+codProf int not null,
+codPrato int not null,
+primary key(codCardapio),
+foreign key(codAluno) references tbAlunos(codAluno),
+foreign key(codProf) references tbProfessores(codProf),
+foreign key(codPrato) references tbPratos(codPrato));
 
 
 
